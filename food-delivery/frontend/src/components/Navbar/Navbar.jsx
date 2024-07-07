@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 import { FaSearch, FaCartPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
 
     const [menu, SetMenu] = useState("home");
 
@@ -22,7 +22,7 @@ const Navbar = () => {
                 <FaCartPlus size={20} color='#49557e'/>
                 <div className="dot"></div>
             </div>
-            <button>Sign In</button>
+            <button onClick={()=>setShowLogin(true)} >Sign In</button>
         </div>
     </div>
   )

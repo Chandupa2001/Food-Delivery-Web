@@ -6,6 +6,7 @@ import remove_icon_red from './remove_icon_red.png'
 import facebook_icon from './facebook.jpg'
 import twitter_icon from './twitter.jpg'
 import linkedin_icon from './linkedin.jpg'
+import cross_icon from './cross_icon.png'
 
 import menu_1 from './menu_1.jpg'
 import menu_2 from './menu_2.jpg'
@@ -57,7 +58,8 @@ export const assets = {
     remove_icon_red,
     facebook_icon,
     twitter_icon,
-    linkedin_icon
+    linkedin_icon,
+    cross_icon
 }
 
 export const menu_list = [
