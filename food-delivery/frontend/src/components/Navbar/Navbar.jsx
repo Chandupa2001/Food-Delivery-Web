@@ -38,7 +38,7 @@ const Navbar = ({setShowLogin}) => {
             : <div className="navbar-profile">
                 <MdAccountCircle size={25} color='#49557e' />
                 <ul className="navbar-profile-dropdown">
-                    <li><HiOutlineShoppingBag size={20} color='tomato' /> <p>Orders</p></li>
+                    <li onClick={()=>navigate('/myorders')}><HiOutlineShoppingBag size={20} color='tomato' /> <p>Orders</p></li>
                     <hr />
                     <li onClick={logout}><IoIosLogOut size={20} color='tomato' /><p>Logout</p></li>
                 </ul>
