@@ -1,14 +1,24 @@
-import React, { useContext, useState } from 'react'
+import React, { Profiler, useContext, useState } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { FaSearch, FaCartPlus } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import { IoIosLogOut } from "react-icons/io";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { MdAccountCircle } from "react-icons/md";
 
 const Navbar = ({setShowLogin}) => {
 
     const [menu, SetMenu] = useState("home");
-    const {getTotalCartAmount} = useContext(StoreContext);
+    const {getTotalCartAmount, token, setToken} = useContext(StoreContext);
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setToken("");
+        navigate("/");
+    }
 
   return (
     <div className='navbar'>
@@ -24,7 +34,16 @@ const Navbar = ({setShowLogin}) => {
                 <Link to={'/cart'}><FaCartPlus size={20} color='#49557e'/></Link>
                 <div className={getTotalCartAmount()===0?"":"dot"}></div>
             </div>
-            <button onClick={()=>setShowLogin(true)} >Sign In</button>
+            {!token?<button onClick={()=>setShowLogin(true)} >Sign In</button>
+            : <div className="navbar-profile">
+                <MdAccountCircle size={25} color='#49557e' />
+                <ul className="navbar-profile-dropdown">
+                    <li onClick={()=>navigate('/myorders')}><HiOutlineShoppingBag size={20} color='tomato' /> <p>Orders</p></li>
+                    <hr />
+                    <li onClick={logout}><IoIosLogOut size={20} color='tomato' /><p>Logout</p></li>
+                </ul>
+            </div> }
+            
         </div>
     </div>
   )
